@@ -14,12 +14,12 @@ import {
 } from "reactstrap";
 
 const data = [
-  { id: 1, personaje: "Naruto", anime: "Naruto" },
-  { id: 2, personaje: "Goku", anime: "Dragon Ball" },
-  { id: 3, personaje: "Kenshin Himura", anime: "Rurouni Kenshin" },
-  { id: 4, personaje: "Monkey D. Luffy", anime: "One Piece" },
-  { id: 5, personaje: "Edward Elric", anime: "Fullmetal Alchemist: Brotherhood"},
-  { id: 6, personaje: "Seto Kaiba", anime: "Yu-Gi-Oh!" },
+  { id: 1, Producto: "Nopal", Categoria: "Alimento", Cantidad: "5" },
+  { id: 2, Producto: "Sal", Categoria: "Bodega", Cantidad: "5" },
+  { id: 3, Producto: "Especias", Categoria: "Aliemnto", Cantidad: "5" },
+  { id: 4, Producto: "Bolsa", Categoria: "Bodega", Cantidad: "6" },
+  { id: 5, Producto: "Frasco", Categoria: "Bodega", Cantidad: "3"},
+  { id: 6, Producto: "Tapa", Categoria: "Bodega", Cantidad: "33"},
 ];
 
 class App extends React.Component {
@@ -29,8 +29,9 @@ class App extends React.Component {
     modalInsertar: false,
     form: {
       id: "",
-      personaje: "",
-      anime: "",
+      Producto: "",
+      Categoria: "",
+      Cantidad: "",
     },
   };
 
@@ -60,8 +61,9 @@ class App extends React.Component {
     var arreglo = this.state.data;
     arreglo.map((registro) => {
       if (dato.id == registro.id) {
-        arreglo[contador].personaje = dato.personaje;
-        arreglo[contador].anime = dato.anime;
+        arreglo[contador].Producto = dato.Producto;
+        arreglo[contador].Categoria = dato.Categoria;
+        arreglo[contador].Cantidad = dato.Cantidad;
       }
       contador++;
     });
@@ -113,8 +115,9 @@ class App extends React.Component {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Personaje</th>
-                <th>Anime</th>
+                <th>Producto</th>
+                <th>Categoria</th>
+                <th>Cantidad</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -123,8 +126,9 @@ class App extends React.Component {
               {this.state.data.map((dato) => (
                 <tr key={dato.id}>
                   <td>{dato.id}</td>
-                  <td>{dato.personaje}</td>
-                  <td>{dato.anime}</td>
+                  <td>{dato.Producto}</td>
+                  <td>{dato.Categoria}</td>
+                  <td>{dato.Cantidad}</td>
                   <td>
                     <Button
                       color="primary"
@@ -161,11 +165,11 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Personaje: 
+              Producto: 
               </label>
               <input
                 className="form-control"
-                name="personaje"
+                name="Producto"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.form.personaje}
@@ -174,16 +178,30 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Anime: 
+              Categoria: 
               </label>
               <input
                 className="form-control"
-                name="anime"
+                name="Categoria"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.anime}
+                value={this.state.form.Categoria}
               />
             </FormGroup>
+
+            <FormGroup>
+              <label>
+              Cantidad: 
+              </label>
+              <input
+                className="form-control"
+                name="Cantidad"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.form.Cantidad}
+              />
+            </FormGroup>
+
           </ModalBody>
 
           <ModalFooter>
@@ -206,7 +224,7 @@ class App extends React.Component {
 
         <Modal isOpen={this.state.modalInsertar}>
           <ModalHeader>
-           <div><h3>Insertar Personaje</h3></div>
+           <div><h3>Insertar Producto</h3></div>
           </ModalHeader>
 
           <ModalBody>
@@ -225,11 +243,11 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Personaje: 
+              Producto: 
               </label>
               <input
                 className="form-control"
-                name="personaje"
+                name="Producto"
                 type="text"
                 onChange={this.handleChange}
               />
@@ -237,15 +255,28 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Anime: 
+              Categoria: 
               </label>
               <input
                 className="form-control"
-                name="anime"
+                name="Categoria"
                 type="text"
                 onChange={this.handleChange}
               />
             </FormGroup>
+
+            <FormGroup>
+              <label>
+              Cantidad: 
+              </label>
+              <input
+                className="form-control"
+                name="Cantidad"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+
           </ModalBody>
 
           <ModalFooter>
